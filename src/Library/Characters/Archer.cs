@@ -1,6 +1,6 @@
 namespace RoleplayGame
 {
-    public class Archer
+    public class Archer: ICharacter
     {
         private int health = 100;
 
@@ -55,5 +55,6 @@ namespace RoleplayGame
         {
             this.Health = 100;
         }
+
     }
 }
