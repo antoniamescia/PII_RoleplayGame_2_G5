@@ -1,6 +1,6 @@
 namespace RoleplayGame
 {
-    public class Archer
+    public class Archer : ICharacter
     {
         private int health = 100;
 
@@ -10,7 +10,7 @@ namespace RoleplayGame
         }
 
         public string Name { get; set; }
-        
+
         public Bow Bow { get; set; }
 
         public Helmet Helmet { get; set; }
@@ -53,7 +53,10 @@ namespace RoleplayGame
 
         public void Cure()
         {
-            this.Health = 100;
+            if (this.health > 0)    // impide que un personaje se cure despues de muerto
+            {
+                this.Health = 100;
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 namespace RoleplayGame
 {
-    public class Wizard
+    public class Wizard : ICharacter
     {
         private int health = 100;
 
@@ -53,7 +53,10 @@ namespace RoleplayGame
 
         public void Cure()
         {
-            this.Health = 100;
+            if (this.health > 0)    // impide que un personaje se cure despues de muerto
+            {
+                this.Health = 100;
+            }
         }
     }
 }

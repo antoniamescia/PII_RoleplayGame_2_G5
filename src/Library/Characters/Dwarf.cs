@@ -1,6 +1,6 @@
 namespace RoleplayGame
 {
-    public class Dwarf
+    public class Dwarf : ICharacter
     {
         private int health = 100;
 
@@ -55,7 +55,10 @@ namespace RoleplayGame
 
         public void Cure()
         {
-            this.Health = 100;
+            if (this.health > 0)    // impide que un personaje se cure despues de muerto
+            {
+                this.Health = 100;
+            }
         }
     }
 }

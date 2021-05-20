@@ -2,10 +2,10 @@ using System.Collections.Generic;
 
 namespace RoleplayGame
 {
-    public class SpellsBook
+    public class SpellsBook : IAttackItem, IDefenseItem
     {
         public Spell[] Spells { get; set; }
-        
+
         public int AttackValue
         {
             get
