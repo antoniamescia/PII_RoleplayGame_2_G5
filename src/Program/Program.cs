@@ -8,7 +8,7 @@ namespace Program
         static void Main(string[] args)
         {
             SpellsBook book = new SpellsBook();
-            book.Spells = new Spell[]{ new Spell() };
+            book.Spells = new Spell[] { new Spell() };
 
             Wizard gandalf = new Wizard("Gandalf");
             gandalf.Staff = new Staff();
