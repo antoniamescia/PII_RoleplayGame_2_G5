@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using RoleplayGame;
 
 namespace Program
@@ -17,6 +18,7 @@ namespace Program
             Dwarf gimli = new Dwarf("Gimli");
             gimli.Axe = new Axe();
             gimli.Helmet = new Helmet();
+            gimli.Shield = new Shield();
 
             Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
             Console.WriteLine($"Gandalf attacks Gimli with ⚔️ {gandalf.AttackValue}");
@@ -28,6 +30,19 @@ namespace Program
             gimli.Cure();
 
             Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
+
+            List<ICharacter> characters = new List<ICharacter>{gandalf, gimli};
+            foreach(ICharacter character in characters)
+            {
+                Console.WriteLine($"{character.Name}");
+            }
+
+            List<IAttackItem> attackItems = new List<IAttackItem>{gandalf.Staff, gandalf.SpellsBook, gimli.Axe};
+            foreach(IAttackItem attackItem in attackItems)
+            {
+                Console.WriteLine($"{attackItem.AttackValue}");
+            }
+
         }
     }
 }
