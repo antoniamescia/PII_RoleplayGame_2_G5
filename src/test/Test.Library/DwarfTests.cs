@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using RoleplayGame;
 
+/*
 namespace Test.Library
 {
     public class DwarfTests
@@ -66,3 +67,4 @@ namespace Test.Library
         }
     }
 }
+*/

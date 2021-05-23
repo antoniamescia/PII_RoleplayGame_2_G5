@@ -1,11 +1,13 @@
 using NUnit.Framework;
 using RoleplayGame;
 
+/*
 namespace Test.Library
 {
     public class ArcherTests
     {
         private Archer legolas;
+
 
         [SetUp]
         public void Setup()
@@ -64,3 +66,4 @@ namespace Test.Library
         }
     }
 }
+*/
