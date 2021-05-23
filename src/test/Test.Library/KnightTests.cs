@@ -11,9 +11,9 @@ namespace Test.Library
         public void Setup()
         {
             this.aragorn = new Knight("Aragorn");
-            aragorn.Sword = new Sword();
-            aragorn.Shield = new Shield();
-            aragorn.Armor = new Armor();
+            Sword sword = new Sword();
+            Shield shield = new Shield();
+            Armor armor = new Armor();
         }
 
         [Test]

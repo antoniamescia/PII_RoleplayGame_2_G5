@@ -11,8 +11,8 @@ namespace Test.Library
         public void Setup()
         {
             this.legolas = new Archer("Legolas");
-            legolas.Bow = new Bow();
-            legolas.Helmet = new Helmet();
+            Bow bow = new Bow();
+            Helmet helmet = new Helmet();
         }
 
         [Test]

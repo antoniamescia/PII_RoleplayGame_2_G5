@@ -11,9 +11,9 @@ namespace Test.Library
         public void Setup()
         {
             this.gandalf = new Wizard("Gandalf");
-            gandalf.Staff = new Staff();
-            gandalf.SpellsBook = new SpellsBook();
-            gandalf.SpellsBook.Spells = new Spell[] { new Spell() };
+            Staff staff = new Staff();
+            SpellsBook spellsBook= new SpellsBook();
+            spellsBook.Spells = new Spell[] { new Spell() };
 
         }
 

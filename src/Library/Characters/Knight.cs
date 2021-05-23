@@ -1,27 +1,38 @@
+using System.Collections.Generic;
+
 namespace RoleplayGame
 {
-    public class Knight : ICharacter
+    public class Knight : IPhysicalCharacter
     {
+        private List<IPhysicalItem> items;
         private int health = 100;
 
         public Knight(string name)
         {
             this.Name = name;
+            this.items = new List<IPhysicalItem>();
         }
 
         public string Name { get; set; }
 
-        public Sword Sword { get; set; }
-
-        public Shield Shield { get; set; }
-
-        public Armor Armor { get; set; }
+        public List<IPhysicalItem> Items
+        {
+            get;
+        }
 
         public int AttackValue
         {
             get
             {
-                return Sword.AttackValue;
+                int attackValue = 0;
+                foreach (IPhysicalItem item in this.Items)
+                {
+                    if (typeof(IAttackItem).IsInstanceOfType(item))
+                    {
+                        attackValue += ((IAttackItem)item).AttackValue;
+                    }
+                }
+                return attackValue;
             }
         }
 
@@ -29,7 +40,15 @@ namespace RoleplayGame
         {
             get
             {
-                return Armor.DefenseValue + Shield.DefenseValue;
+                int defenseValue = 0;
+                foreach (IPhysicalItem item in this.Items)
+                {
+                    if (typeof(IDefenseItem).IsInstanceOfType(item))
+                    {
+                        defenseValue += ((IDefenseItem)item).DefenseValue;
+                    }
+                }
+                return defenseValue;
             }
         }
 
@@ -59,6 +78,16 @@ namespace RoleplayGame
             {
                 this.Health = 100;
             }
+        }
+
+        public void AddItem(IPhysicalItem item)
+        {
+            this.Items.Add(item);
+        }
+
+        public void RemoveItem(IPhysicalItem item)
+        {
+            this.Items.Remove(item);
         }
     }
 }
