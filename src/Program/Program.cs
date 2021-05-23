@@ -14,16 +14,29 @@ namespace Program
             Wizard gandalf = new Wizard("Gandalf");
             Staff staff = new Staff();
             SpellsBook spellsBook = book;
+            gandalf.AddItem(spellsBook);
+            gandalf.AddItem(staff);
 
             Dwarf gimli = new Dwarf("Gimli");
             Axe axe = new Axe();
             Helmet helmet = new Helmet();
             Shield shield = new Shield();
+            gimli.AddItem(axe);
+            gimli.AddItem(helmet);
+            gimli.AddItem(shield);
+
+            Archer legolas = new Archer ("Legolas");
+            Bow bow = new Bow();
+            Shield legolasShield = new Shield();
+            Helmet legolasHelmet = new Helmet();
+            legolas.AddItem(bow);
+            legolas.AddItem(legolasShield);
+            legolas.AddItem(legolasHelmet);
 
             Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
             Console.WriteLine($"Gandalf attacks Gimli with ⚔️ {gandalf.AttackValue}");
 
-            gimli.ReceiveAttack(gandalf.AttackValue);
+            gimli.ReceiveAttack(gandalf);
 
             Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
 
@@ -31,19 +44,17 @@ namespace Program
 
             Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
 
-            // List<ICharacter> characters = new List<ICharacter>{gandalf, gimli};
-            // foreach(ICharacter character in characters)
-            // {
-            //     Console.WriteLine($"{character.Name}");
-            // }
+            legolas.RemoveItem(legolasHelmet);
 
-            // List<IAttackItem> attackItems = new List<IAttackItem>{gandalf.Staff, gandalf.SpellsBook, gimli.Axe};
-            // foreach(IAttackItem attackItem in attackItems)
-            // {
-            //     Console.WriteLine($"{attackItem.AttackValue}");
-            // }
+            gandalf.ReceiveAttack(legolas);
+            Console.WriteLine($"Legolas attacks Gandalf with ⚔️ {legolas.AttackValue}");
 
-            
+            Console.WriteLine($"Gandalf has ❤️ {gandalf.Health}");
+
+            legolas.ReceiveAttack(gimli);
+            Console.WriteLine($"Gimli attacks Legolas with ⚔️ {gimli.AttackValue}");
+            Console.WriteLine($"Legolas has ❤️ {legolas.Health}");
+
 
         }
     }

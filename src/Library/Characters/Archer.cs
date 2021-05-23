@@ -64,11 +64,11 @@ namespace RoleplayGame
             }
         }
 
-        public void ReceiveAttack(int power)
+        public void ReceiveAttack(ICharacter character)
         {
-            if (this.DefenseValue < power)
+            if (this.DefenseValue < character.AttackValue && character.Health > 0)
             {
-                this.Health -= power - this.DefenseValue;
+                this.Health -= character.AttackValue - this.DefenseValue;
             }
         }
 
