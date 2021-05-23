@@ -13,6 +13,8 @@ namespace Test.Library
             this.legolas = new Archer("Legolas");
             Bow bow = new Bow();
             Helmet helmet = new Helmet();
+            legolas.AddItem(bow);
+            legolas.AddItem(helmet);
         }
 
         [Test]

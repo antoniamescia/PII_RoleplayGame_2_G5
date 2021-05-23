@@ -4,13 +4,12 @@ namespace RoleplayGame
 {
     public class Wizard : IMagicalCharacter
     {
-        private List<IItem> items;
         private int health = 100;
 
         public Wizard(string name)
         {
             this.Name = name;
-            this.items = new List<IItem>();
+            this.Items = new List<IItem>();
         }
 
         public string Name { get; set; }
@@ -18,6 +17,7 @@ namespace RoleplayGame
         public List<IItem> Items
         {
             get;
+            private set;
         }
 
         public int AttackValue

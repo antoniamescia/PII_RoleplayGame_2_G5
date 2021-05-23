@@ -14,6 +14,9 @@ namespace Test.Library
             Axe axe = new Axe();
             Helmet helmet = new Helmet();
             Shield shield = new Shield();
+            gimli.AddItem(axe);
+            gimli.AddItem(helmet);
+            gimli.AddItem(shield);
         }
 
         [Test]

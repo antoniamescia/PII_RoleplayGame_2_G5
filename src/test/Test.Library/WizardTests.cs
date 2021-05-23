@@ -14,6 +14,8 @@ namespace Test.Library
             Staff staff = new Staff();
             SpellsBook spellsBook= new SpellsBook();
             spellsBook.Spells = new Spell[] { new Spell() };
+            gandalf.AddItem(staff);
+            gandalf.AddItem(spellsBook);
 
         }
 

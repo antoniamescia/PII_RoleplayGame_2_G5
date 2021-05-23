@@ -14,6 +14,9 @@ namespace Test.Library
             Sword sword = new Sword();
             Shield shield = new Shield();
             Armor armor = new Armor();
+            aragorn.AddItem(sword);
+            aragorn.AddItem(shield);
+            aragorn.AddItem(armor);
         }
 
         [Test]

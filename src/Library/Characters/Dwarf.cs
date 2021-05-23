@@ -5,13 +5,13 @@ namespace RoleplayGame
     public class Dwarf : IPhysicalCharacter
     {
 
-        private List<IPhysicalItem> items;
+        
         private int health = 100;
 
         public Dwarf(string name)
         {
             this.Name = name;
-            this.items = new List<IPhysicalItem>();
+            this.Items = new List<IPhysicalItem>();
         }
 
         public string Name { get; set; }
@@ -19,6 +19,7 @@ namespace RoleplayGame
         public List<IPhysicalItem> Items
         {
             get;
+            private set;
         }
 
         public int AttackValue
