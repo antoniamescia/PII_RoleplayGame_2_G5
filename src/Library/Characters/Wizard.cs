@@ -1,25 +1,42 @@
+using System.Collections.Generic;
+
 namespace RoleplayGame
 {
-    public class Wizard : ICharacter
+    public class Wizard : IMagicalCharacter
     {
         private int health = 100;
 
         public Wizard(string name)
         {
             this.Name = name;
+            this.Items = new List<IItem>();
         }
 
         public string Name { get; set; }
 
-        public SpellsBook SpellsBook { get; set; }
-
-        public Staff Staff { get; set; }
+        public List<IItem> Items
+        {
+            get;
+            private set;
+        }
 
         public int AttackValue
         {
             get
             {
-                return SpellsBook.AttackValue + Staff.AttackValue;
+                int attackValue = 0;
+                foreach (IItem item in this.Items)
+                {
+                    if (typeof(IAttackItem).IsInstanceOfType(item))
+                    {
+                        attackValue += ((IAttackItem)item).AttackValue;
+                    }
+                    else if (typeof(IMagicAttackItem).IsInstanceOfType(item))
+                    {
+                        attackValue += ((IMagicAttackItem)item).AttackValue;
+                    }
+                }
+                return attackValue;
             }
         }
 
@@ -27,7 +44,19 @@ namespace RoleplayGame
         {
             get
             {
-                return SpellsBook.DefenseValue + Staff.DefenseValue;
+                int defenseValue = 0;
+                foreach (IItem item in this.Items)
+                {
+                    if (typeof(IDefenseItem).IsInstanceOfType(item))
+                    {
+                        defenseValue += ((IDefenseItem)item).DefenseValue;
+                    }
+                    else if (typeof(IMagicDefenseItem).IsInstanceOfType(item))
+                    {
+                        defenseValue += ((IMagicDefenseItem)item).DefenseValue;
+                    }
+                }
+                return defenseValue;
             }
         }
 
@@ -57,6 +86,16 @@ namespace RoleplayGame
             {
                 this.Health = 100;
             }
+        }
+
+        public void AddItem(IItem item)
+        {
+            this.Items.Add(item);
+        }
+
+        public void RemoveItem(IItem item)
+        {
+            this.Items.Remove(item);
         }
     }
 }

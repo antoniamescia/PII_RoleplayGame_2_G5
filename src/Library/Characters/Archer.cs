@@ -1,25 +1,38 @@
+using System.Collections.Generic;
+
 namespace RoleplayGame
 {
-    public class Archer : ICharacter
+    public class Archer : IPhysicalCharacter
     {
         private int health = 100;
 
         public Archer(string name)
         {
             this.Name = name;
+            this.Items = new List<IPhysicalItem>();
         }
 
         public string Name { get; set; }
 
-        public Bow Bow { get; set; }
-
-        public Helmet Helmet { get; set; }
+        public List<IPhysicalItem> Items
+        {
+            get;
+            private set;
+        }
 
         public int AttackValue
         {
             get
             {
-                return Bow.AttackValue;
+                int attackValue = 0;
+                foreach (IPhysicalItem item in this.Items)
+                {
+                    if (typeof(IAttackItem).IsInstanceOfType(item))
+                    {
+                        attackValue += ((IAttackItem)item).AttackValue;
+                    }
+                }
+                return attackValue;
             }
         }
 
@@ -27,7 +40,15 @@ namespace RoleplayGame
         {
             get
             {
-                return Helmet.DefenseValue;
+                int defenseValue = 0;
+                foreach (IPhysicalItem item in this.Items)
+                {
+                    if (typeof(IDefenseItem).IsInstanceOfType(item))
+                    {
+                        defenseValue += ((IDefenseItem)item).DefenseValue;
+                    }
+                }
+                return defenseValue;
             }
         }
 
@@ -57,6 +78,16 @@ namespace RoleplayGame
             {
                 this.Health = 100;
             }
+        }
+
+        public void AddItem(IPhysicalItem item)
+        {
+            this.Items.Add(item);
+        }
+
+        public void RemoveItem(IPhysicalItem item)
+        {
+            this.Items.Remove(item);
         }
     }
 }

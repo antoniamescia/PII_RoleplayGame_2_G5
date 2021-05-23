@@ -11,9 +11,12 @@ namespace Test.Library
         public void Setup()
         {
             this.gimli = new Dwarf("Gimli");
-            gimli.Axe = new Axe();
-            gimli.Helmet = new Helmet();
-            gimli.Shield = new Shield();
+            Axe axe = new Axe();
+            Helmet helmet = new Helmet();
+            Shield shield = new Shield();
+            gimli.AddItem(axe);
+            gimli.AddItem(helmet);
+            gimli.AddItem(shield);
         }
 
         [Test]
